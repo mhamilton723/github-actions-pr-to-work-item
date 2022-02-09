@@ -52,15 +52,15 @@ export function editedPatchDocument(
   let bodyPayload: string = payload.body
   let trimmedBody: string = ""
 
-  if(bodyPayload == undefined) {
-    console.log("Body payload is null. Skipping manipulating it.")
-
-    trimmedBody = ""
-  }
-  else {
+  if(bodyPayload) {
     bodyPayload = bodyPayload.replace(`\r\nAB#${workItem.id}`, '')
 
     trimmedBody = bodyPayload.trim()
+  }
+  else {
+    console.log("Body payload is null. Skipping manipulating it.")
+
+    trimmedBody = ""
   }
 
   const pr_title = `${payload.title} (GitHub PR #${payload.number})`

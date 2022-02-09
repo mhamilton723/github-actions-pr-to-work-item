@@ -52,7 +52,7 @@ export function editedPatchDocument(
   let bodyPayload: string = payload.body
   let trimmedBody: string = ""
 
-  if(bodyPayload == null) {
+  if(bodyPayload == undefined) {
     console.log("Body payload is null. Skipping manipulating it.")
 
     trimmedBody = ""

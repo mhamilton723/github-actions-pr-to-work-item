@@ -53,9 +53,7 @@ function getWebHookPayLoad(): Payload {
   vm.sender_login = body.sender?.login !== undefined ? body.sender.login : ''
   vm.body = body.pull_request?.body !== undefined ? body.pull_request?.body : ''
 
-  if(vm.body) {
-    vm.body = vm.body.replace(new RegExp('\\r?\\n','g'), '<br />')
-  }
+  vm.body = vm.body.replace(new RegExp('\\r?\\n','g'), '<br />')
 
   return vm
 }

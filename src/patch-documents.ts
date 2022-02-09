@@ -50,13 +50,8 @@ export function editedPatchDocument(
     : ''
 
   let payloadBody: string = payload.body
-
-  if(payloadBody) {
-    payloadBody = payloadBody.replace(`\r\nAB#${workItem.id}`, '')
-  }
-  else {
-    payloadBody = `\r\nAB#${workItem.id}`
-  }
+    ? payload.body.replace(`\r\nAB#${workItem.id}`, '')
+    : ''
 
   const pr_title = `${payload.title} (GitHub PR #${payload.number})`
   const pr_desc = `${payloadBody.trim()}<br><br>GitHub <a href="${

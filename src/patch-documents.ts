@@ -49,10 +49,22 @@ export function editedPatchDocument(
     ? workItem.fields['System.Description']
     : ''
 
-  payload.body = payload.body.replace(`\r\nAB#${workItem.id}`, '')
+  let bodyPayload: string = payload.body
+  let trimmedBody: string = ""
+
+  if(bodyPayload == null) {
+    console.log("Body payload is null. Skipping manipulating it.")
+
+    trimmedBody = ""
+  }
+  else {
+    bodyPayload = bodyPayload.replace(`\r\nAB#${workItem.id}`, '')
+
+    trimmedBody = bodyPayload.trim()
+  }
 
   const pr_title = `${payload.title} (GitHub PR #${payload.number})`
-  const pr_desc = `${payload.body.trim()}<br><br>GitHub <a href="${
+  const pr_desc = `${trimmedBody}<br><br>GitHub <a href="${
     payload.url
   }">Pull Request #${payload.number}</a> created in <a href="${
     payload.repo_url

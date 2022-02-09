@@ -48,7 +48,6 @@ export function editedPatchDocument(
   const system_description: string = workItem.fields
     ? workItem.fields['System.Description']
     : ''
-
   let payloadBody: string = payload.body
     ? payload.body.replace(`\r\nAB#${workItem.id}`, '')
     : ''

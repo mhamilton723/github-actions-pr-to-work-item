@@ -224,7 +224,7 @@ async function run(): Promise<void> {
       }
     }
   } catch (error) {
-    core.setFailed(error.stack)
+    core.setFailed("Testing if this is an actual output.")
   }
 }
 

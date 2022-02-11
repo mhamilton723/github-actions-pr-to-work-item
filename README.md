@@ -49,9 +49,9 @@ jobs:
         github_token: '${{ secrets.GH_TOKEN }}'    
         ado_organization: 'privatepreview'
         ado_project: 'Agile'
-        ado_wit: 'Pull Request' 
-        ado_new_state: 'New'
+        ado_wit: 'Pull Request'
         ado_active_state: 'Active'
         ado_close_state: 'Closed'
         ado_area_path: 'optional_area_path\\optional_area_path'
+        debug: false
 ```

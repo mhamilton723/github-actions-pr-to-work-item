@@ -34,7 +34,7 @@ The id of the work item created or update
 name: Sync Pull Request to Azure Boards
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, edited, closed]
     branches:
       - master

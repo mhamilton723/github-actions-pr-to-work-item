@@ -19,10 +19,13 @@ const ado_wit = 'Pull Request'
 const ado_area_path = ''
 const github_token = ''
 
-
 // prettier-ignore
 function getEnvInputs(): EnvInputs {
   const vm: EnvInputs = new EnvInputs()
+
+  if(debug) {
+    console.log(process.env)
+  }
 
   vm.ado_token = process.env['ado_token'] !== undefined ? process.env['ado_token'] : ado_token
   vm.ado_organization = process.env['ado_organization'] !== undefined ? process.env['ado_organization'] : ado_org

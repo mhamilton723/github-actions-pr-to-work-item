@@ -6928,19 +6928,16 @@ const sample_webhookpayload_1 = __importDefault(__webpack_require__(78));
 const workitems_1 = __webpack_require__(445);
 const github_pr_1 = __webpack_require__(515);
 const patch = __importStar(__webpack_require__(286));
-const debug = true;
 const ado_org = '';
 const ado_project = '';
 const ado_token = '';
 const ado_wit = 'Pull Request';
 const ado_area_path = '';
 const github_token = '';
+let debug = false;
 // prettier-ignore
 function getEnvInputs() {
     const vm = new env_inputs_1.default();
-    if (debug) {
-        console.log(process.env);
-    }
     vm.ado_token = process.env['ado_token'] !== undefined ? process.env['ado_token'] : ado_token;
     vm.ado_organization = process.env['ado_organization'] !== undefined ? process.env['ado_organization'] : ado_org;
     vm.ado_project = process.env['ado_project'] !== undefined ? process.env['ado_project'] : ado_project;
@@ -6949,6 +6946,10 @@ function getEnvInputs() {
     vm.ado_active_state = process.env['ado_active_state'] !== undefined ? process.env['ado_active_state'] : 'Active';
     vm.github_token = process.env['github_token'] !== undefined ? process.env['github_token'] : github_token;
     vm.ado_area_path = process.env['ado_area_path'] !== undefined ? process.env['ado_area_path'] : ado_area_path;
+    debug = process.env['debug'] !== undefined ? process.env['debug'].toLowerCase() == 'true' : debug;
+    if (debug) {
+        console.log(process.env);
+    }
     return vm;
 }
 // prettier-ignore

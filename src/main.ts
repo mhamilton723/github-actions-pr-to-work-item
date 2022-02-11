@@ -11,7 +11,6 @@ import {update as updatePr} from './github-pr'
 import {IResponse} from './interfaces/base-response'
 import * as patch from './patch-documents'
 
-const debug = true
 const ado_org = ''
 const ado_project = ''
 const ado_token = ''
@@ -19,13 +18,11 @@ const ado_wit = 'Pull Request'
 const ado_area_path = ''
 const github_token = ''
 
+let debug: boolean = false
+
 // prettier-ignore
 function getEnvInputs(): EnvInputs {
   const vm: EnvInputs = new EnvInputs()
-
-  if(debug) {
-    console.log(process.env)
-  }
 
   vm.ado_token = process.env['ado_token'] !== undefined ? process.env['ado_token'] : ado_token
   vm.ado_organization = process.env['ado_organization'] !== undefined ? process.env['ado_organization'] : ado_org
@@ -35,6 +32,11 @@ function getEnvInputs(): EnvInputs {
   vm.ado_active_state = process.env['ado_active_state'] !== undefined ? process.env['ado_active_state'] : 'Active'
   vm.github_token = process.env['github_token'] !== undefined ? process.env['github_token'] : github_token
   vm.ado_area_path = process.env['ado_area_path'] !== undefined ? process.env['ado_area_path'] : ado_area_path
+  debug = process.env['debug'] !== undefined ? process.env['debug'].toLowerCase() == 'true' : debug
+
+  if(debug) {
+    console.log(process.env)
+  }
 
   return vm
 }
